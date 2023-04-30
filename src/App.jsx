@@ -5,7 +5,7 @@ import Header from "./Components/Header/Header";
 function App() {
   return (
     <div className="app">
-      <Header></Header>
+      <Header color={true}></Header>
       <Outlet></Outlet>
     </div>
   );

@@ -7,25 +7,33 @@
   padding-top: 35px;
 }
 
+.black {
+  color: black;
+}
+
+.white {
+  color: white;
+}
+
 .header-item,
 .header-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 
 .header-img img {
   width: 120px;
   height: 56px;
-  color: white;
+  /* color: white; */
 }
 
 .header-nav li,
 .link-li {
   list-style: none;
-  color: #ffffff;
+  /* color: #ffffff; */
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
@@ -37,7 +45,7 @@
   border-radius: 5px;
   padding: 12px 30px;
   width: 350px;
-  color: #ffffff;
+  /* color: #ffffff; */
 }
 
 .header-item ::placeholder {

@@ -5,13 +5,13 @@ import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import ActiveLink from "../ActiveLink/ActiveLink";
 
-const Header = () => {
+const Header = ({ color }) => {
   return (
-    <div className="header">
+    <div className={`${color ? "white" : "black"} header`}>
       <Link to={"/"} className="header-img">
         <img src={logo} alt="logo" />
       </Link>
-      <div className="header-item">
+      <div className={`${color ? "white" : "black"} header-item`}>
         <div className="header-input-icon">
           <BiSearch className="header-icon" />
           <input
@@ -20,7 +20,7 @@ const Header = () => {
             placeholder="search you Destination"
           />
         </div>
-        <ul className="header-nav">
+        <ul className={`${color ? "white" : "black"} header-nav`}>
           <li>
             <ActiveLink className="link-li" to={`/`}>
               News
@@ -36,7 +36,9 @@ const Header = () => {
             <ActiveLink to={`/contact`}>Contact</ActiveLink>
           </li>
           <li>
-            <button className="btn">Login</button>
+            <Link to={`/auth/login`} className="btn">
+              Login
+            </Link>
           </li>
         </ul>
       </div>
