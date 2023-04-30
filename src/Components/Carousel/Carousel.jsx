@@ -7,13 +7,14 @@ import { EffectCoverflow, Pagination, Autoplay, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import { Link } from "react-router-dom";
 
 const Carousel = () => {
   const [destination, setDestination] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/destination")
       .then((res) => res.json())
       .then((data) => {
         setDestination(data);
@@ -39,9 +40,12 @@ const Carousel = () => {
         <p className="carousel-subtitle">
           {activeDestination?.description.slice(0, 200)}...
         </p>
-        <button className="btn btn-booking">
+        <Link
+          to={`/travel/${activeDestination.id}`}
+          className="btn btn-booking"
+        >
           Booking <AiOutlineArrowRight />
-        </button>
+        </Link>
       </div>
       <div>
         <div className="">
