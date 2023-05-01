@@ -1,10 +1,12 @@
 import React from "react";
 import "./Travel.css";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const Travel = () => {
   const travel = useLoaderData();
-  console.log(travel);
+  const p = useParams();
+  console.log(p);
+
   return (
     <div className="travel">
       <div className="travel-info">
