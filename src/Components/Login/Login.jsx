@@ -48,7 +48,11 @@ const Login = () => {
           </form>
           <p>
             Don't have an account?{" "}
-            <Link className="yellow" to={"/auth/register"}>
+            <Link
+              className="yellow"
+              to={"/auth/register"}
+              state={location?.state}
+            >
               Create an account
             </Link>
           </p>
