@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import fb from "../../assets/images/icons/fb.png";
 import google from "../../assets/images/icons/google.png";
+import { toast } from "react-hot-toast";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { register } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(name, email, password);
+
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
+      toast.error("Password at least 8 char");
+    }
+    if ((name, email, password)) {
+      register(email, password)
+        .then((result) => {
+          console.log(result.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (

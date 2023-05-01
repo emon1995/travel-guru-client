@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Header.css";
 import logo from "../../assets/logo.png";
 import { BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import ActiveLink from "../ActiveLink/ActiveLink";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Header = ({ color }) => {
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {})
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   return (
     <div className={`${color ? "white" : "black"} header`}>
       <Link to={"/"} className="header-img">
@@ -35,11 +47,20 @@ const Header = ({ color }) => {
           <li>
             <ActiveLink to={`/contact`}>Contact</ActiveLink>
           </li>
-          <li>
-            <Link to={`/auth/login`} className="btn">
-              Login
-            </Link>
-          </li>
+          {user?.email && <li>{user?.email}</li>}
+          {user ? (
+            <li>
+              <button onClick={handleLogOut} className="btn">
+                Logout
+              </button>
+            </li>
+          ) : (
+            <li>
+              <Link to={`/auth/login`} className="btn">
+                Login
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>
