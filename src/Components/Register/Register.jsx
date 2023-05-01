@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import fb from "../../assets/images/icons/fb.png";
 import google from "../../assets/images/icons/google.png";
 import { toast } from "react-hot-toast";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
   const { register } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ const Register = () => {
       register(email, password)
         .then((result) => {
           console.log(result.user);
+          navigate("/");
         })
         .catch((err) => {
           console.log(err);

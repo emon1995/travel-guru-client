@@ -7,6 +7,7 @@ import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
 import Blog from "../Components/Blog/Blog";
 import Auth from "../Components/Auth/Auth";
+import PrivateRoute from "./PrivateRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -41,7 +42,11 @@ const Routes = createBrowserRouter([
   },
   {
     path: "/blog",
-    element: <Blog></Blog>,
+    element: (
+      <PrivateRoute>
+        <Blog></Blog>
+      </PrivateRoute>
+    ),
   },
 ]);
 

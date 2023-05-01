@@ -1,6 +1,6 @@
 import React from "react";
 import "./Travel.css";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Travel = () => {
   const travel = useLoaderData();
@@ -29,7 +29,9 @@ const Travel = () => {
             <input type="date" name="to" id="field" />
           </div>
         </div>
-        <button className="btn btn-start-booking">Start Booking</button>
+        <Link to={`/blog`}>
+          <button className="btn btn-start-booking">Start Booking</button>
+        </Link>
       </div>
     </div>
   );
