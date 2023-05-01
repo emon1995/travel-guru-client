@@ -11,7 +11,9 @@ const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const path = location.state.pathname || "/";
+  console.log(location);
+
+  const path = location?.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
