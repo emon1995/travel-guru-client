@@ -8,6 +8,8 @@ import Register from "../Components/Register/Register";
 import Blog from "../Components/Blog/Blog";
 import Auth from "../Components/Auth/Auth";
 import PrivateRoute from "./PrivateRoute";
+import Destination from "../Components/Destination/Destination";
+import Contact from "../Components/Contact/Contact";
 
 const Routes = createBrowserRouter([
   {
@@ -24,6 +26,22 @@ const Routes = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/destination/${params.id}`),
       },
+      {
+        path: "/destination",
+        element: <Destination></Destination>,
+      },
+      {
+        path: "/blog",
+        element: (
+          <PrivateRoute>
+            <Blog></Blog>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
+      },
     ],
   },
   {
@@ -39,14 +57,6 @@ const Routes = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
-  },
-  {
-    path: "/blog",
-    element: (
-      <PrivateRoute>
-        <Blog></Blog>
-      </PrivateRoute>
-    ),
   },
 ]);
 
